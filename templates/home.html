@@ -1,7 +1,56 @@
 {% extends 'base.html' %}
 
-{% block title %}Loja Python{% endblock %}
+{% block title %}Homepage{% endblock %}
 
 {% block content %}
-    Olá!
+    <h1>Olá! Seja bem vindo!</h1>
+    <div class="row">
+        {% if user.is_authenticated %}
+            <div class="content">
+                <h4>Você está logado! {{ user.email }}</h4>
+                {% include "charts\chart02.html" %}
+            </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat, sapien ut placerat viverra, orci metus ornare urna, vel accumsan leo augue eget velit. Aliquam nunc mi, gravida ac mattis id, tincidunt at metus. Mauris bibendum vehicula justo eget consectetur. Nunc malesuada lacinia ex vitae placerat. Fusce ut viverra nibh. Nunc malesuada eros eget arcu tristique facilisis. Sed non pharetra justo, eu vehicula nisl. Phasellus nisl tortor, condimentum euismod pellentesque eget, commodo quis neque. Maecenas accumsan, lorem quis venenatis vulputate, quam massa faucibus tellus, vitae gravida lacus mi sed erat. Donec vehicula ac metus sed faucibus.</p>
+    </div>
+    <div class="row">
+        <div class="col s12 l6">
+            <img class="responsive-img materialboxed" src="https://images.unsplash.com/photo-1542403764-19e1bb75cc75?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="">
+            <p>Sed sed rutrum tellus. Cras condimentum tristique orci in rhoncus. Proin eu mauris lacinia, placerat erat placerat, consequat ipsum. Pellentesque pellentesque ligula id nibh faucibus vehicula. Donec orci tellus, viverra quis euismod feugiat, pulvinar vitae nunc. Sed convallis nisi sed nibh vestibulum, nec egestas velit sollicitudin. Fusce porttitor lobortis ante, ut mollis dui rhoncus in. Etiam eleifend maximus eros, sed faucibus quam tempor eu. Donec aliquam ac nulla eu maximus. Sed ut mi sed lacus auctor tincidunt. Maecenas bibendum faucibus pellentesque. Integer justo tellus, congue a orci vitae, commodo auctor sem. Praesent eu dictum mi. Phasellus et nulla nisl. Sed tristique orci ipsum, in lobortis nunc posuere eget.</p>
+        </div>
+        <div class="col s12 l6">
+            <p>Quisque mattis metus metus, non porta tortor vulputate vitae. Nulla nec gravida urna. Phasellus varius iaculis eros in accumsan. Fusce aliquam elit lorem, ac semper arcu elementum sit amet. Nunc et augue tortor. Phasellus ultrices, tellus gravida viverra ornare, quam nisl sodales diam, vitae ultrices velit nulla at ligula. Curabitur sit amet malesuada erat, a imperdiet mi. Aliquam quis semper nibh. Nam sed auctor mauris. Vivamus ac fermentum nisl. Sed sagittis, elit nec tincidunt faucibus, risus ligula consequat ex, nec scelerisque dui sapien a mi.</p>
+            <div class="chart">
+                {% include "charts\chart01.html" %}
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        var options = {
+            inDuration: 500,
+            outDuration: 500,
+            onOpenStart: function() {
+                console.log("onOpenStart");
+            },
+            onOpenEnd: function() {
+                console.log("onOpenEnd");
+            },
+            onCloseStart: function() {
+                console.log("onCloseStart");
+            },
+            onCloseEnd: function() {
+                console.log("onCloseEnd");
+            },
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.materialboxed');
+            var instances = M.Materialbox.init(elems, options)
+        });
+    </script>
+
 {% endblock %}
